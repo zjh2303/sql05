@@ -1,0 +1,121 @@
+信息系统与数据库技术练习5答题卡
+
+班级：     信管2班
+姓名：     张佳楠
+学号：     20190307230
+
+注：请将答案放置在序号下方。*/
+
+（二）
+1.1.
+CREATE DATABASE BookShop
+ON
+(
+NAME=Shop2,
+FILENAME='D:\练习5\Shop1.MDF',
+SIZE=5,
+MAXSIZE=50,
+FILEGROWTH=2
+)
+LOG ON
+(
+NAME=Shoplog2,
+FILENAME='D:\练习5\Shoplog1.LDF',
+SIZE=5,
+MAXSIZE=50,
+FILEGROWTH=2
+)
+2.
+CREATE DATABASE Travel
+ON
+(
+NAME=Travel2,
+FILENAME='D:\练习5\Travel1.MDF',
+SIZE=9,
+MAXSIZE=UNLIMITED,
+FILEGROWTH=6
+),
+(
+NAME=Travel4,
+FILENAME='D:\练习5\Travel3.NDF',
+SIZE=6,
+MAXSIZE=UNLIMITED,
+FILEGROWTH=10%
+)
+LOG ON
+(
+NAME=Travellog2,
+FILENAME='D:\练习5\Travellog1.LDF',
+SIZE=6,
+MAXSIZE=UNLIMITED,
+FILEGROWTH=10%
+)
+3.
+CREATE DATABASE Warehouse
+ON
+(
+NAME=Warehouse2,
+FILENAME='D:\练习5\Warehouse1.MDF',
+SIZE=8,
+MAXSIZE=80,
+FILEGROWTH=15%
+),
+FILEGROUP grp
+(
+NAME=Warehouse4,
+FILENAME='D:\练习5\Warehouse3.NDF',
+SIZE=8,
+MAXSIZE=80,
+FILEGROWTH=15%
+)
+LOG ON
+(
+NAME=Warehouselog2,
+FILENAME='D:\练习5\Warehouselog1.LDF',
+SIZE=8,
+MAXSIZE=80,
+FILEGROWTH=15%
+)
+（三）
+
+/*==============================================================*/
+/* DBMS name:      Sybase SQL Anywhere 12                       */
+/* Created on:     2020/4/3 19:06:33                            */
+/*==============================================================*/
+
+
+if exists(select 1 from sys.sysforeignkey where role='FK_任职_RELATIONS_职工') then
+    alter table 任职
+       delete foreign key FK_任职_RELATIONS_职工
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_任职_RELATIONS_职称职务') then
+    alter table 任职
+       delete foreign key FK_任职_RELATIONS_职称职务
+end if;
+
+if exists(select 1 from sys.sysforeignkey where role='FK_职工_分工_部门') then
+    alter table 职工
+       delete foreign key FK_职工_分工_部门
+end if;
+
+drop index if exists 任职.Relationship_4_FK;
+
+drop index if exists 任职.Relationship_3_FK;
+
+drop index if exists 任职.任职_PK;
+
+
+
+2.
+
+
+
+3.
+
+
+
+
+（三）
+
+
